@@ -1,0 +1,121 @@
+<!-- classes: title -->
+
+# 複数ピンをまとめて表示する<br />Yahoo!地図用のJavaScriptライブラリを作りました
+
+![](./assets/demo.png)
+
+---
+
+## 自己紹介
+
+
+
+堀　悟大<br />
+有限会社アップルップル フロントエンドエンジニア
+
+
+---
+
+## YahooMap!の積極利用を始めた背景
+
+### Google Mapsの使用制限
+
+Google Maps がクレジットカード情報の登録が必須になり、無料での利用が 28,000pv/月までと仕様が変更になりました。
+
+---
+
+## 各サービスの利用制限
+
+1日 50,000pv と Google と比べると 50倍以上利用が可能
+
+| サービス | 無料PV数 | APIキー取得 | クレジットカード番号 |
+| ------- | ------- | ---------- | ---------------- |
+| Yahoo! Map | 50,000 pv/日 | 必須 | 必要無し |
+| Google Map | 28,000 pv/月	| 必須	| 登録必須 |
+| OpenStreetMap	| -- | 未設定 | 必要無し |
+
+---
+
+## ピンの数が多い時に利用する Marker Clustering
+
+地図に複数のピンを立てることについては、どのサービスでも可能ですが Google では公式に Marker Clustering という機能が提供されています
+
+![](https://www.appleple.com/archives/002/201901/981b5c542715e6ce99236e718ac72710.png)
+
+---
+
+import Map from './scripts/yahoo-map';
+
+## 今回作成した Yahoo Map Cluster
+
+<Map />
+
+---
+
+## 使い方
+
+JavaScriptの読み込み
+
+```html
+<script src="https://map.yahooapis.jp/js/V1/jsapi?appid=[YahooMapのAPIキー]"></script>
+<script src="https://unpkg.com/yahoo-map-cluster@latest/bundle/ymap-cluster.js"></script>
+```
+
+---
+
+## 使い方
+
+もしくはnpmでインストール
+
+```
+$ npm install yahoo-map-cluster --save
+```
+
+---
+
+## 使い方
+
+JavaScriptの記述
+
+```js
+var ymap = new Y.Map("map");
+ymap.drawMap(new Y.LatLng(35.66572, 139.73100), 15, Y.LayerSetId.NORMAL);
+var marker = new Y.Marker(new Y.LatLng(35.66572, 139.73100));
+var marker2 = new Y.Marker(new Y.LatLng(35.66572, 139.73000));
+var marker3 = new Y.Marker(new Y.LatLng(35.665, 139.734));
+var marker4 = new Y.Marker(new Y.LatLng(35.6635, 139.734));
+var marker5 = new Y.Marker(new Y.LatLng(35.665, 139.731));
+var marker6 = new Y.Marker(new Y.LatLng(35.6642, 139.733));
+var marker7 = new Y.Marker(new Y.LatLng(35.6635, 139.7328));
+var marker8 = new Y.Marker(new Y.LatLng(35.665, 139.7343));
+var marker9 = new Y.Marker(new Y.LatLng(35.6638, 139.7333));
+var marker10 = new Y.Marker(new Y.LatLng(35.6628, 139.7333));
+new YmapCluster(ymap, [marker, marker2, marker3, marker4, marker5, marker6, 
+marker7, marker8, marker9, marker10]);
+```
+
+---
+
+## 使い方
+
+オプションの紹介
+
+Yahoo! Map Cluster にはその他いくつかのオプションが用意されています。
+
+| オプション名 | デフォルト値 | 説明 |
+| ------- | ------- | ---------- | 
+| gridSize | 60(px) | クラスターの半径。この半径に含まれるピンが同じクラスターにカテゴライズされます。|
+| minClusterSize | 2 | クラスターの中のpinの最小の数。ピンが集まっていてもこの数以下だとクラスタリングされない。 |
+| imagePath | ./images/cluster/ | クラスター画像に使用するアセットのパス |
+| injectStyle | | .ymap-cluster-label, .ymap-cluster-icon などクラスターに関するクラスに対してスタイルを記述するための関数 |
+| getClusterSize | | クラスターの中のピン数に応じてクラスターの色を変更するための関数 |
+
+---
+
+## アルゴリズムの紹介
+
+---
+
+## アルゴリズムの紹介
+
+1. 近くのクラスターを検索

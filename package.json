@@ -1,0 +1,19 @@
+{
+  "name": "geo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fusuma": "^1.14.2"
+  },
+  "dependencies": {
+    "yahoo-map-cluster": "^1.0.6",
+    "yahoo-map-loader": "^1.0.3"
+  }
+}
