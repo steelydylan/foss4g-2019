@@ -30,5 +30,5 @@ export default () => {
     });
   }, []);
   
-  return (<div ref={mapRef} style={{ width: '600px', height: '400px', margin: '0 auto'}}></div>);
+  return (<div id="map" ref={mapRef} style={{ width: '600px', height: '400px', margin: '0 auto'}}></div>);
 }
