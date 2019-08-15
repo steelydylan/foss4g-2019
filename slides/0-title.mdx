@@ -124,4 +124,43 @@ Yahoo! Map Cluster にはその他いくつかのオプションが用意され�
 
 ## アルゴリズムの解説
 
+<img src="./assets/diagram.png" style={{width: '600px'}}/>
+
+---
+
+## アルゴリズムの解説
+
+### 近くのクラスターの検索方法
+
+ただの2点間の距離ではなく地球が丸いことを考慮
+
+2点間の<code>lat, lng</code>から距離を算出（`km`）
+
+Rは地球の半径 6731km
+
+```js
+a = sin²(Δφ/2) + cos φ1 * cos φ2 * sin²(Δλ/2)
+c = 2 * atan2( √a, √(1−a) )
+d = R * c
+```
+
+---
+
+## ぜひスターお願いします！
+
+<img src="./assets/github.png" style={{width: '800px'}}/>
+
+
+---
+
+<!-- classes: final -->
+
+# ありがとうございました！
+
+
+
+
+
+
+
 
