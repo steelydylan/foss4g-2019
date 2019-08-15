@@ -13,8 +13,10 @@ slide:
   code:
     languages:
       - javascript
+      - xml
+      - shell
     plugins: []
-    theme: default
+    theme: twilight
   chart: false
   math: false
 extends:
